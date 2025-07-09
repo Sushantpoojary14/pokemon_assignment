@@ -6,19 +6,18 @@ export async function getPokemon(name: string) {
     return res.data;
   } catch (error) {
     console.log(error);
-
-    throw new Error("Failed to fetch Pokemon");
+    return null
   }
-};
+}
 
-export async function getAllPokemon(page:   number) {
+export async function getAllPokemon(page: number, limit: number = 10) {
   try {
     const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon?limit=10&offset=${page * 10}`
+      `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${page}`
     );
     return res.data;
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch Pokemon");
+   return null
   }
-};
+}
