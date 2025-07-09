@@ -1,12 +1,12 @@
-// app/pokemon/[pkname]/page.tsx
+
 import { getPokemon } from '@/lib/api/pokemon';
 import Image from 'next/image';
 import Link from 'next/link';
 
 
 export default async function PokemonDetail({ params }: { params: { name: string } }) {
-  const name = await params
-  const res = await getPokemon(name.name);
+  const name = typeof params?.name === "string" ? params.name : "";
+  const res = await getPokemon(name);
 
   if (!res) {
     return (
